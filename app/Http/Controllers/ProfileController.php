@@ -14,7 +14,7 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        return redirect('profile/create');
+        //
     }
 
     /**
@@ -24,9 +24,7 @@ class ProfileController extends Controller
      */
     public function create()
     {
-        $title = "My Profile";
-        $data = '';
-        return view('profile.create', compact('title', 'data'));
+        //
     }
 
     /**
@@ -61,10 +59,6 @@ class ProfileController extends Controller
     {
         $title = "My Profile";
         $user = User::find($id);
-        //$pdata = $data->profile();
-
-        //dd($pdata);
-
         return view('profile.create', compact('title', 'id', 'user'));
     }
 
