@@ -11,4 +11,9 @@ class Profile extends Model
         'profile_pic', 'address', 'bio',
     ];
 
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
+
 }

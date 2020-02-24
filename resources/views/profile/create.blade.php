@@ -8,14 +8,18 @@
                 <div class="card-header">{{ __($title) }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('profile.store') }}">
+                    <form method="POST" action="{{ url('profile/'.$id) }}">
+                        {{method_field('PUT')}}
                         @csrf
 
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                <input id="name" type="text" 
+                                class="form-control @error('name') is-invalid @enderror" name="name" 
+                                value="{{ $user->name }}" required autocomplete="name" autofocus
+                                >
 
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -29,7 +33,9 @@
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                                <input id="email" type="email" 
+                                class="form-control @error('email') is-invalid @enderror" name="email" 
+                                value="{{$user->email}}" required autocomplete="email">
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -43,7 +49,10 @@
                             <label for="profile_pic" class="col-md-4 col-form-label text-md-right">{{ __('Profile pic') }}</label>
 
                             <div class="col-md-6">
-                                <input id="profile_pic" type="text" class="form-control @error('profile_pic') is-invalid @enderror" name="profile_pic">
+                                <input id="profile_pic" type="text" 
+                                class="form-control @error('profile_pic') is-invalid @enderror"
+                            value="{{$user->profile->profile_pic}}"
+                                 name="profile_pic">
                                 @error('profile_pic')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -56,7 +65,7 @@
                             <label for="bio" class="col-md-4 col-form-label text-md-right">{{ __('Bio') }}</label>
 
                             <div class="col-md-6">
-                                <input id="bio" type="text" class="form-control" name="bio">
+                            <input id="bio" type="text" value="{{$user->profile->bio}}" class="form-control" name="bio">
                             </div>
                         </div>
 
@@ -64,7 +73,7 @@
                             <label for="address" class="col-md-4 col-form-label text-md-right">{{ __('Address') }}</label>
 
                             <div class="col-md-6">
-                                <input id="address" type="text" class="form-control" name="address">
+                            <input id="address" type="text" value="{{$user->profile->address}}" class="form-control" name="address">
                             </div>
                         </div>
 

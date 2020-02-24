@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 
 class ProfileController extends Controller
@@ -58,7 +59,13 @@ class ProfileController extends Controller
      */
     public function edit($id)
     {
-        //
+        $title = "My Profile";
+        $user = User::find($id);
+        //$pdata = $data->profile();
+
+        //dd($pdata);
+
+        return view('profile.create', compact('title', 'id', 'user'));
     }
 
     /**
@@ -70,7 +77,20 @@ class ProfileController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::find($id);
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+        ]);
+
+        $user->profile()->update([
+            'profile_pic' => $request->profile_pic,
+            'bio' => $request->bio,
+            'address' => $request->address,
+        ]);
+
+        return redirect('profile/' . $id . '/edit');
+
     }
 
     /**
