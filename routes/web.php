@@ -33,3 +33,15 @@ Route::delete('/country/{id}/delete', 'CountryController@destroy');
 Route::get('/persons', 'PersonController@index');
 Route::get('/persons/create', 'PersonController@create');
 Route::post('/persons/create', 'PersonController@store');
+
+//authors
+Route::get('/authors', 'AuthorsController@index');
+Route::get('/authors/create', 'AuthorsController@create');
+Route::post('/authors/create', 'AuthorsController@store');
+
+//books
+Route::get('/books', 'BooksController@index');
+Route::get('/books/create', 'BooksController@create');
+Route::post('/books/create', 'BooksController@store');
+Route::get('/books/{id}/edit', 'BooksController@edit');
+Route::patch('/books/{id}/edit', 'BooksController@update');

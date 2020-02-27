@@ -54,13 +54,27 @@
                         @endif
                         @else
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{url('country')}}">{{ __('Country List') }}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{url('persons')}}">{{ __('Parson List') }}</a>
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ __('OneToMany')}} <span class="caret"></span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{url('country')}}">{{ __('Country List') }}</a>
+                                <a class="dropdown-item" href="{{url('persons')}}">{{ __('Parson List') }}</a>
+                            </div>
                         </li>
 
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ __('ManyToMany')}} <span class="caret"></span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{url('authors')}}">{{ __('author List') }}</a>
+                                <a class="dropdown-item" href="{{url('books')}}">{{ __('book List') }}</a>
+                            </div>
+                        </li>
 
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
@@ -73,7 +87,6 @@
                                 <a class="dropdown-item" href="{{ url('profile/' . Auth::user()->id.'/edit') }}">
                                     {{ __('Profile') }}
                                 </a>
-
 
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
