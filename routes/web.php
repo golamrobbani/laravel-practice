@@ -38,6 +38,10 @@ Route::post('/persons/create', 'PersonController@store');
 Route::get('/authors', 'AuthorsController@index');
 Route::get('/authors/create', 'AuthorsController@create');
 Route::post('/authors/create', 'AuthorsController@store');
+Route::get('/authors/{id}', 'AuthorsController@show');
+Route::get('/authors/{id}/edit', 'AuthorsController@edit');
+Route::patch('/authors/{id}/edit', 'AuthorsController@update');
+Route::delete('/authors/{id}/delete', 'AuthorsController@destroy');
 
 //books
 Route::get('/books', 'BooksController@index');

@@ -22,8 +22,17 @@
                         @foreach ($authors as $author)
                         <tr>
                             <td>{{ $author->id }}</td>
-                            <td>{{ $author->name }}</td>
+                            <td><a href="/authors/{{$author->id}}">{{ $author->name }}</a></td>
                             <td>{{ $author->email }}</td>
+                            <td>
+                                <a href="/authors/{{$author->id}}/edit" class="btn btn-danger btn-sm">Edit</a>
+                                <form action="/authors/{{$author->id}}/delete" method="POST" class="d-inline">
+                                    @csrf
+                                    @method('delete')
+
+                                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                </form>
+                            </td>
                         </tr>
                         @endforeach
                     </table>

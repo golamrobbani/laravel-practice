@@ -53,7 +53,9 @@ class AuthorsController extends Controller
      */
     public function show($id)
     {
-        //
+        $title = 'authors create';
+        $author = Author::find($id);
+        return view('authors.details', compact('title', 'author'));
     }
 
     /**
@@ -64,7 +66,7 @@ class AuthorsController extends Controller
      */
     public function edit($id)
     {
-        //
+        echo 'edit';
     }
 
     /**
@@ -87,6 +89,6 @@ class AuthorsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        echo 'delete';
     }
 }
